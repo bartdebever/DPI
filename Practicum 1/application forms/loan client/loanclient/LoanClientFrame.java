@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import messaging.requestreply.ReplyMessageProducer;
 import messaging.requestreply.RequestReply;
 import model.loan.*;
 
@@ -114,6 +115,7 @@ public class LoanClientFrame extends JFrame {
 				LoanRequest request = new LoanRequest(ssn,amount,time);
 				listModel.addElement( new RequestReply<LoanRequest,LoanReply>(request, null));	
 				// to do:  send the JMS with request to Loan Broker
+				ReplyMessageProducer.SendReply(request, "bank.LoadRequest");
 			}
 		});
 		GridBagConstraints gbc_btnQueue = new GridBagConstraints();

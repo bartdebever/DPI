@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.jms.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -12,11 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import messaging.requestreply.RequestReply;
 import model.bank.*;
 import model.loan.LoanRequest;
+import model.bank.BankInterestReply;
+import model.bank.BankInterestRequest;
+import org.apache.activemq.ActiveMQConnectionFactory;
 
-
-public class LoanBrokerFrame extends JFrame {
+public class LoanBrokerFrame extends JFrame{
 
 	/**
 	 * 
@@ -44,6 +48,9 @@ public class LoanBrokerFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public LoanBrokerFrame() {
+
+		Thread thread = new Thread(new ConsumerRunnable(this));
+		thread.run();
 		setTitle("Loan Broker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -103,5 +110,57 @@ public class LoanBrokerFrame extends JFrame {
 		}		
 	}
 
+}
 
+class ConsumerRunnable implements Runnable
+{
+	private LoanBrokerFrame frame;
+	public ConsumerRunnable(LoanBrokerFrame frame){
+		this.frame = frame;
+	}
+
+
+	@Override
+	public void run() {
+		try {
+
+			// Create a ConnectionFactory
+			ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("http://localhost:61616");
+
+			// Create a Connection
+			Connection connection = connectionFactory.createConnection();
+			connection.start();
+
+			// Create a Session
+			Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+			// Create the destination (Topic or Queue)
+			Destination destination = session.createQueue("bank.LoadRequest");
+
+			// Create a MessageConsumer from the Session to the Topic or Queue
+			MessageConsumer consumer = session.createConsumer(destination);
+
+			// Wait for a message
+			Message message = consumer.receive();
+
+			if (message instanceof ObjectMessage) {
+				ObjectMessage objectMessage = (ObjectMessage)message;
+				LoanRequest request = (LoanRequest) objectMessage.getObject();
+
+				EventQueue.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						frame.add(request);
+					}
+				});
+			}
+
+			consumer.close();
+			session.close();
+			connection.close();
+		} catch (Exception e) {
+			System.out.println("Caught: " + e);
+			e.printStackTrace();
+		}
+	}
 }

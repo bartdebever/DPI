@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import messaging.requestreply.ReplyMessageProducer;
 import model.bank.*;
 import messaging.requestreply.RequestReply;
 
@@ -101,7 +102,9 @@ public class JMSBankFrame extends JFrame {
 				if (rr!= null && reply != null){
 					rr.setReply(reply);
 	                list.repaint();
+
 					// todo: sent JMS message with the reply to Loan Broker
+					ReplyMessageProducer.SendReply(rr, "bank.BankInterest");
 				}
 			}
 		});
