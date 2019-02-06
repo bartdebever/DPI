@@ -1,4 +1,4 @@
-package messaging;
+package messaging.implementations;
 
 public class ActiveMQMessageReceiver {
 

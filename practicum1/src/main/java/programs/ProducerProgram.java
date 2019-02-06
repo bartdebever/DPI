@@ -1,4 +1,6 @@
-import messaging.ActiveMQMessageProducer;
+package programs;
+
+import messaging.implementations.ActiveMQMessageProducer;
 import messaging.models.SimpleMessage;
 
 import java.util.Scanner;

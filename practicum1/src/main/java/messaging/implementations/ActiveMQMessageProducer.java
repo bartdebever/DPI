@@ -1,6 +1,7 @@
-package messaging;
+package messaging.implementations;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
+import messaging.helpers.AMQConnectionFactory;
+
 import javax.jms.*;
 import java.io.Serializable;
 

@@ -1,3 +1,5 @@
+package programs;
+
 import messaging.models.SimpleMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 

@@ -1,4 +1,4 @@
-package messaging;
+package messaging.helpers;
 
 /**
  * Class inteded to be used to store static values of what channel should be used for what purpose.
