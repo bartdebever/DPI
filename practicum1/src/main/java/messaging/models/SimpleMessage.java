@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class SimpleMessage implements Serializable {
     private String sender;
     private String content;
+    private int id;
+    private int correlationId;
 
     public SimpleMessage() {
     }
@@ -28,5 +30,21 @@ public class SimpleMessage implements Serializable {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCorrelationId() {
+        return correlationId;
+    }
+
+    public void setCorrelationId(int correlationId) {
+        this.correlationId = correlationId;
     }
 }

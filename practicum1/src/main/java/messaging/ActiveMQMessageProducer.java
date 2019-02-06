@@ -8,12 +8,7 @@ import java.io.Serializable;
 public class ActiveMQMessageProducer {
     public static <T extends Serializable> void SendReply(T reply, String queue) {
         try {
-            // Create a ConnectionFactory
-            ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
-
-            // Create a Connection
-            Connection connection = connectionFactory.createConnection();
-            connection.start();
+            Connection connection = AMQConnectionFactory.createConnection();
 
             // Create a Session
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
