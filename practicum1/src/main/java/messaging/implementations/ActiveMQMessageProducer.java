@@ -6,38 +6,14 @@ import javax.jms.*;
 import java.io.Serializable;
 
 // TODO Make abstract
-public class ActiveMQMessageProducer {
+public abstract class ActiveMQMessageProducer {
 
     private static int idCounter;
-    public static <T extends Serializable> void sendMessage(T reply, String queue) {
-        try {
-            Connection connection = AMQConnectionFactory.createConnection();
-
-            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
-            // Create the destination (Topic or Queue)
-            Destination destination = session.createQueue(queue);
-
-            // Create a MessageProducer from the Session to the Topic or Queue
-            javax.jms.MessageProducer producer = session.createProducer(destination);
-            producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-
-            ObjectMessage objectMessage = session.createObjectMessage();
-            objectMessage.setObject(reply);
-
-            producer.send(objectMessage);
-
-            // Clean up
-            producer.close();
-            session.close();
-        }
-        catch (Exception e) {
-            System.out.println("Caught: " + e);
-            e.printStackTrace();
-        }
+    public <T extends Serializable> void sendMessage(T reply, String queue) {
+        sendReply(reply, queue, null);
     }
 
-    public static <T extends Serializable> void sendReply(T reply, String queue, String messageId) {
+    public <T extends Serializable> void sendReply(T reply, String queue, String messageId) {
         try {
             Connection connection = AMQConnectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
@@ -48,10 +24,14 @@ public class ActiveMQMessageProducer {
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
             ObjectMessage message = session.createObjectMessage();
-            message.setJMSCorrelationID(messageId);
-            message.setObject(reply);
+            if (messageId != null) {
+                message.setJMSCorrelationID(messageId);
+            }
 
+            message.setObject(reply);
             producer.send(message);
+
+            onMessageSent(message, reply);
 
             producer.close();
             session.close();
@@ -60,6 +40,9 @@ public class ActiveMQMessageProducer {
             System.out.println("Caught: " + e);
             e.printStackTrace();
         }
+    }
+
+    public void onMessageSent(ObjectMessage message, Object payload) {
 
     }
 }
