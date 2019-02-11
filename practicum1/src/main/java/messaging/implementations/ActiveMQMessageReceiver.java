@@ -8,7 +8,7 @@ import javax.jms.*;
 public abstract class ActiveMQMessageReceiver implements Runnable {
 
     private String queue;
-    private boolean interrupted;
+    private boolean interrupted = false;
 
     public ActiveMQMessageReceiver(String queue) {
         this.queue = queue;
@@ -25,10 +25,7 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
     public void run() {
         try {
             // Create a ConnectionFactory
-            Connection connection = AMQConnectionFactory.createConnection(true);
-
-            // Create a Session
-            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            Session session = AMQConnectionFactory.createsSession();
 
             // Create the destination (Topic or Queue)
             Destination destination = session.createQueue(queue);
@@ -47,8 +44,7 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
             }
 
             consumer.close();
-            session.close();
-            connection.close();
+
         } catch (Exception e) {
             System.out.println("Caught: " + e);
             e.printStackTrace();
