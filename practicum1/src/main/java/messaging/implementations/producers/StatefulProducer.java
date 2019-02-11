@@ -1,16 +1,16 @@
 package messaging.implementations.producers;
 
-import messaging.helpers.AMQConnectionFactory;
 import messaging.implementations.ActiveMQMessageProducer;
 import messaging.models.SimpleMessage;
 import messaging.tracking.StatefullSession;
 
-import javax.jms.*;
+import javax.jms.JMSException;
+import javax.jms.ObjectMessage;
 
-public class StatefullProducer extends ActiveMQMessageProducer {
+public class StatefulProducer extends ActiveMQMessageProducer {
 
     private static StatefullSession statefullSession;
-    public StatefullProducer(StatefullSession session) {
+    public StatefulProducer(StatefullSession session) {
         statefullSession = session;
     }
 
