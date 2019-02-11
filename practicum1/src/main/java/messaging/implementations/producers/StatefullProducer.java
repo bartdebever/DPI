@@ -1,15 +1,20 @@
-package messaging.implementations;
+package messaging.implementations.producers;
 
 import messaging.helpers.AMQConnectionFactory;
+import messaging.models.SimpleMessage;
+import messaging.tracking.StatefullSession;
 
 import javax.jms.*;
 import java.io.Serializable;
 
-// TODO Make abstract
-public class ActiveMQMessageProducer {
+public class StatefullProducer {
 
-    private static int idCounter;
-    public static <T extends Serializable> void sendMessage(T reply, String queue) {
+    private static StatefullSession statefullSession;
+    public StatefullProducer(StatefullSession session) {
+        statefullSession = session;
+    }
+
+    public <T extends Serializable> void sendMessage(SimpleMessage reply, String queue) {
         try {
             Connection connection = AMQConnectionFactory.createConnection();
 
@@ -26,7 +31,7 @@ public class ActiveMQMessageProducer {
             objectMessage.setObject(reply);
 
             producer.send(objectMessage);
-
+            statefullSession.sendMessage(reply.getSender(), objectMessage.getJMSMessageID());
             // Clean up
             producer.close();
             session.close();
@@ -37,7 +42,7 @@ public class ActiveMQMessageProducer {
         }
     }
 
-    public static <T extends Serializable> void sendReply(T reply, String queue, String messageId) {
+    public <T extends Serializable> void sendReply(SimpleMessage reply, String queue, String messageId) {
         try {
             Connection connection = AMQConnectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
@@ -52,7 +57,7 @@ public class ActiveMQMessageProducer {
             message.setObject(reply);
 
             producer.send(message);
-
+            statefullSession.sendMessage(reply.getSender(), message.getJMSMessageID());
             producer.close();
             session.close();
 
@@ -63,4 +68,3 @@ public class ActiveMQMessageProducer {
 
     }
 }
-
