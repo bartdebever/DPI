@@ -4,6 +4,9 @@ import messaging.implementations.ActiveMQMessageProducer;
 import messaging.implementations.ActiveMQMessageReceiver;
 import messaging.models.SimpleMessage;
 
+import javax.jms.JMSException;
+import javax.jms.Message;
+
 public class ReceiverWithReply extends ActiveMQMessageReceiver {
 
     private String replyQueue;
@@ -13,8 +16,12 @@ public class ReceiverWithReply extends ActiveMQMessageReceiver {
     }
 
     @Override
-    public void receiveMessage(SimpleMessage message) {
-        ActiveMQMessageProducer.sendReply(new SimpleMessage("Client", "Accepted"), replyQueue);
-        super.receiveMessage(message);
+    public void receiveMessage(SimpleMessage simpleMessage, Message message) {
+        try {
+            ActiveMQMessageProducer.sendReply(new SimpleMessage("Client", "Accepted"), replyQueue, message.getJMSMessageID());
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
+        super.receiveMessage(simpleMessage, message);
     }
 }

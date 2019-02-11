@@ -15,7 +15,7 @@ public class ProducerProgram {
         while(true) {
             Scanner scanner = new Scanner(System.in);
             if(scanner.hasNext()){
-                ActiveMQMessageProducer.sendReply(new SimpleMessage("Bart", scanner.nextLine()), ChannelProtocol.MessageToClient);
+                ActiveMQMessageProducer.sendMessage(new SimpleMessage("Bart", scanner.nextLine()), ChannelProtocol.MessageToClient);
             }
 
         }

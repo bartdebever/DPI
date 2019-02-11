@@ -4,6 +4,8 @@ import messaging.helpers.AMQConnectionFactory;
 import messaging.models.SimpleMessage;
 
 import javax.jms.*;
+import java.awt.peer.SystemTrayPeer;
+import java.io.IOException;
 
 public abstract class ActiveMQMessageReceiver implements Runnable {
 
@@ -14,8 +16,18 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
         this.queue = queue;
     }
 
-    public void receiveMessage(SimpleMessage message) {
-        System.out.println(String.format("%s: %s", message.getSender(), message.getContent()));
+    public void receiveMessage(SimpleMessage simpleMessage, Message message) {
+        try {
+            if (message.getJMSCorrelationID() == null) {
+                System.out.println(String.format("%s: %s", simpleMessage.getSender(), simpleMessage.getContent()));
+                return;
+            }
+
+            System.out.println(String.format("%s: %s with correlationId %s", simpleMessage.getSender(), simpleMessage.getContent(), message.getJMSCorrelationID()));
+        }
+        catch (JMSException e) {
+            e.printStackTrace();
+        }
     }
 
     public void stopReceiving() {
@@ -39,7 +51,7 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
                 if (message instanceof ObjectMessage) {
                     ObjectMessage objectMessage = (ObjectMessage) message;
                     SimpleMessage simpleMessage = (SimpleMessage) objectMessage.getObject();
-                    this.receiveMessage(simpleMessage);
+                    this.receiveMessage(simpleMessage, message);
                 }
             }
 
