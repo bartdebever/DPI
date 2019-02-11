@@ -15,6 +15,11 @@ public class AMQConnectionFactory {
         // Create a ConnectionFactory
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(BROKERURL);
 
+        // Trusts all packages so the messages can be received.
+        // This ideally should be done on a package basis but this is not well maintainable imo.
+        // For testing purposes and ease of use, I'll do it like this.
+        connectionFactory.setTrustAllPackages(trustAll);
+
         // Create a Connection
         Connection connection = connectionFactory.createConnection();
         connection.start();
