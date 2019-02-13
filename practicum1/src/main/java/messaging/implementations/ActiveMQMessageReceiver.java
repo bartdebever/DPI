@@ -30,7 +30,7 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
         }
     }
 
-    public void stopReceiving() {
+    public void stop() {
         interrupted = true;
     }
 
