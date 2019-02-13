@@ -14,6 +14,7 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
     private ActiveMQMessageReceiver receiver;
     private ActiveMQMessageProducer producer;
     private String queue;
+    private Thread receiverThread;
 
     public ActiveMQGateway(String queue) {
         this.queue = queue;
@@ -39,11 +40,17 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
         this.producer.sendMessage(message, queue, messageId);
     }
 
-    public void runReceiver() {
-        receiver.run();
+    public void runReceiver() throws Exception {
+        if (receiverThread != null) {
+            throw new Exception("Tried to start Receiver thread while running.");
+        }
+
+        receiverThread = new Thread(receiver);
+        receiverThread.start();
     }
 
     public void stopReceiver() {
+        receiverThread.interrupt();
         receiver.stop();
     }
 

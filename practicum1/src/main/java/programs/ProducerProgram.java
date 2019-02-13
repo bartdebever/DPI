@@ -1,6 +1,8 @@
 package programs;
 
+import messaging.gateways.interfaces.ActiveMQGateway;
 import messaging.helpers.ChannelProtocol;
+import messaging.implementations.producers.SimpleProducer;
 import messaging.implementations.producers.StatefulProducer;
 import messaging.implementations.receivers.StatefullReceiver;
 import messaging.models.SimpleMessage;
@@ -11,14 +13,20 @@ import java.util.Scanner;
 public class ProducerProgram {
     public static void main(String[] args) {
         StatefullSession session = new StatefullSession();
-        StatefulProducer producer = new StatefulProducer(session);
-        Thread receiverThread = new Thread(new StatefullReceiver(ChannelProtocol.MessageToServer, session));
-        receiverThread.start();
+        ActiveMQGateway<SimpleMessage, SimpleMessage> gateway = new ActiveMQGateway<SimpleMessage, SimpleMessage>(ChannelProtocol.MessageToClient);
+        gateway.setProducer(new StatefulProducer(session));
+        gateway.setReceiver(new StatefullReceiver(ChannelProtocol.MessageToServer, session));
+
+        try {
+            gateway.runReceiver();
+        } catch (Exception e) {
+            System.out.println("Unable to run receiver.");
+        }
 
         while(true) {
             Scanner scanner = new Scanner(System.in);
             if(scanner.hasNext()){
-                producer.sendMessage(new SimpleMessage("Bart", scanner.nextLine()), ChannelProtocol.MessageToClient);
+                gateway.sendMessage(new SimpleMessage("Bart", scanner.nextLine()));
             }
 
         }
