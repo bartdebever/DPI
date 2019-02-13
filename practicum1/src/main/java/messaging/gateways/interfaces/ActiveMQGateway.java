@@ -3,6 +3,7 @@ package messaging.gateways.interfaces;
 import messaging.implementations.ActiveMQMessageProducer;
 import messaging.implementations.ActiveMQMessageReceiver;
 import messaging.listeners.interfaces.IMessageReceivedListener;
+import messaging.listeners.interfaces.IOnMessageSendListener;
 import messaging.serialisers.interfaces.ISerialiser;
 
 import java.io.Serializable;
@@ -30,6 +31,7 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
 
     public void setSerialiser(ISerialiser<ReceiveObject> serialiser) {
         this.receiver.setSerialiser(serialiser);
+        this.producer.setSerialiser(serialiser);
     }
 
     public void sendMessage(SendObject message) {
@@ -61,4 +63,6 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
     public void removeMessageListener(IMessageReceivedListener listener) {
         this.receiver.removeListener(listener);
     }
+
+    public void addMessageSentListener(IOnMessageSendListener listener) {this.producer.addListener(listener);}
 }
