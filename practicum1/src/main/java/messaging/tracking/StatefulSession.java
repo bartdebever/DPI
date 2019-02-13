@@ -3,10 +3,10 @@ package messaging.tracking;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StatefullSession {
+public class StatefulSession {
     private Map<String, String> senders;
 
-    public StatefullSession() {
+    public StatefulSession() {
         senders = new HashMap<String, String>();
     }
 

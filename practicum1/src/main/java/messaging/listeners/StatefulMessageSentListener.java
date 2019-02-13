@@ -2,14 +2,14 @@ package messaging.listeners;
 
 import messaging.listeners.interfaces.IOnMessageSendListener;
 import messaging.models.SimpleMessage;
-import messaging.tracking.StatefullSession;
+import messaging.tracking.StatefulSession;
 
 import java.io.Serializable;
 
 public class StatefulMessageSentListener implements IOnMessageSendListener {
-    private StatefullSession session;
+    private StatefulSession session;
 
-    public StatefulMessageSentListener(StatefullSession session) {
+    public StatefulMessageSentListener(StatefulSession session) {
         this.session = session;
     }
 
