@@ -8,10 +8,10 @@ import java.io.Serializable;
 public abstract class ActiveMQMessageProducer {
 
     public <T extends Serializable> void sendMessage(T payload, String queue) {
-        sendReply(payload, queue, null);
+        sendMessage(payload, queue, null);
     }
 
-    public <T extends Serializable> void sendReply(T reply, String queue, String messageId) {
+    public <T extends Serializable> void sendMessage(T reply, String queue, String messageId) {
         try {
             Connection connection = AMQConnectionFactory.createConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
