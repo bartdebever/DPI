@@ -2,13 +2,28 @@ package programs;
 
 import messaging.gateways.interfaces.ActiveMQGateway;
 import messaging.helpers.ChannelProtocol;
-import messaging.implementations.receivers.ReceiverWithReply;
+import messaging.implementations.producers.SimpleProducer;
+import messaging.implementations.receivers.SimpleMessageReceiver;
+import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.models.SimpleMessage;
+import messaging.serialisers.SimpleMessageSerialiser;
 
-public class ReceiverProgram {
+import java.io.Serializable;
+
+public class ReceiverProgram implements IMessageReceivedListener {
+    private static ActiveMQGateway gateway;
     public static void main(String[] args) throws Exception {
-        ActiveMQGateway<SimpleMessage, SimpleMessage> gateway = new ActiveMQGateway<SimpleMessage, SimpleMessage>(ChannelProtocol.MessageToClient);
-        gateway.setReceiver(new ReceiverWithReply(ChannelProtocol.MessageToClient, ChannelProtocol.MessageToServer));
+        gateway = new ActiveMQGateway<SimpleMessage, SimpleMessage>(ChannelProtocol.MessageToServer);
+        gateway.setProducer(new SimpleProducer());
+        gateway.setReceiver(new SimpleMessageReceiver(ChannelProtocol.MessageToClient));
+        gateway.setSerialiser(new SimpleMessageSerialiser());
+        gateway.addMessageListener(new ReceiverProgram());
         gateway.runReceiver();
+    }
+
+    public void onMessageReceived(Serializable message) {
+        SimpleMessage simpleMessage = (SimpleMessage)message;
+        System.out.println(String.format("%s: %s", simpleMessage.getSender(), simpleMessage.getContent()));
+        gateway.sendMessage(new SimpleMessage("Client", "Received"), simpleMessage.getMessageId());
     }
 }

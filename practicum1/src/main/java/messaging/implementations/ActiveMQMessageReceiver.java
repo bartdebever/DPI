@@ -1,35 +1,48 @@
 package messaging.implementations;
 
 import messaging.helpers.AMQConnectionFactory;
+import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.models.SimpleMessage;
+import messaging.serialisers.interfaces.ISerialiser;
 
 import javax.jms.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ActiveMQMessageReceiver implements Runnable {
 
     private String queue;
     private boolean interrupted = false;
+    private List<IMessageReceivedListener> listeners;
+    private ISerialiser serialiser;
 
     public ActiveMQMessageReceiver(String queue) {
         this.queue = queue;
+        this.listeners = new ArrayList<IMessageReceivedListener>();
     }
 
-    public void receiveMessage(SimpleMessage simpleMessage, Message message) {
-        try {
-            if (message.getJMSCorrelationID() == null) {
-                System.out.println(String.format("%s: %s", simpleMessage.getSender(), simpleMessage.getContent()));
-                return;
-            }
+    public void addListener(IMessageReceivedListener listener) {
+        this.listeners.add(listener);
+    }
 
-            System.out.println(String.format("%s: %s with correlationId %s", simpleMessage.getSender(), simpleMessage.getContent(), message.getJMSCorrelationID()));
-        }
-        catch (JMSException e) {
-            e.printStackTrace();
-        }
+    public void removeListener(IMessageReceivedListener listener) {
+        this.listeners.remove(listener);
+    }
+
+    public void setSerialiser(ISerialiser serialiser) {
+        this.serialiser = serialiser;
     }
 
     public void stop() {
         interrupted = true;
+    }
+
+    public void receiveMessage(Serializable payload, Message message) {
+        payload = serialiser.getObject(payload, message);
+        for (IMessageReceivedListener listener : listeners) {
+            listener.onMessageReceived(payload);
+        }
     }
 
     public void run() {
@@ -47,9 +60,8 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
             while (!interrupted) {
                 Message message = consumer.receive();
                 if (message instanceof ObjectMessage) {
-                    ObjectMessage objectMessage = (ObjectMessage) message;
-                    SimpleMessage simpleMessage = (SimpleMessage) objectMessage.getObject();
-                    this.receiveMessage(simpleMessage, message);
+                    ObjectMessage objectMessage = (ObjectMessage)message;
+                    receiveMessage(objectMessage.getObject(), objectMessage);
                 }
             }
 

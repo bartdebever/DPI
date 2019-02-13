@@ -6,6 +6,7 @@ import messaging.tracking.StatefullSession;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
+import java.io.Serializable;
 
 public class StatefullReceiver extends ActiveMQMessageReceiver {
     private StatefullSession session;
@@ -16,8 +17,9 @@ public class StatefullReceiver extends ActiveMQMessageReceiver {
     }
 
     @Override
-    public void receiveMessage(SimpleMessage simpleMessage, Message message) {
+    public void receiveMessage(Serializable payload, Message message) {
         try {
+            SimpleMessage simpleMessage = (SimpleMessage)payload;
             if (message.getJMSCorrelationID() == null) {
                 super.receiveMessage(simpleMessage, message);
                 return;

@@ -29,7 +29,7 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
     }
 
     public void setSerialiser(ISerialiser<ReceiveObject> serialiser) {
-        this.serialiser = serialiser;
+        this.receiver.setSerialiser(serialiser);
     }
 
     public void sendMessage(SendObject message) {
@@ -55,10 +55,10 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
     }
 
     public void addMessageListener(IMessageReceivedListener listener) {
-        this.listeners.add(listener);
+        this.receiver.addListener(listener);
     }
 
     public void removeMessageListener(IMessageReceivedListener listener) {
-        this.listeners.remove(listener);
+        this.receiver.removeListener(listener);
     }
 }

@@ -18,13 +18,13 @@ public class ReceiverWithReply extends ActiveMQMessageReceiver {
         producer = new SimpleProducer();
     }
 
-    @Override
-    public void receiveMessage(SimpleMessage simpleMessage, Message message) {
-        try {
-            producer.sendMessage(new SimpleMessage("Client", "Accepted"), replyQueue, message.getJMSMessageID());
-        } catch (JMSException e) {
-            e.printStackTrace();
-        }
-        super.receiveMessage(simpleMessage, message);
-    }
+//    @Override
+//    public void receiveMessage(SimpleMessage simpleMessage, Message message) {
+//        try {
+//            producer.sendMessage(new SimpleMessage("Client", "Accepted"), replyQueue, message.getJMSMessageID());
+//        } catch (JMSException e) {
+//            e.printStackTrace();
+//        }
+//        super.receiveMessage(simpleMessage, message);
+//    }
 }
