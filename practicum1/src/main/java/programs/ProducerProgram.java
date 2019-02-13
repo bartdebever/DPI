@@ -2,7 +2,6 @@ package programs;
 
 import messaging.gateways.interfaces.ActiveMQGateway;
 import messaging.helpers.ChannelProtocol;
-import messaging.implementations.producers.SimpleProducer;
 import messaging.implementations.producers.StatefulProducer;
 import messaging.implementations.receivers.StatefullReceiver;
 import messaging.models.SimpleMessage;

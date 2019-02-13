@@ -4,8 +4,6 @@ import messaging.helpers.AMQConnectionFactory;
 import messaging.models.SimpleMessage;
 
 import javax.jms.*;
-import java.awt.peer.SystemTrayPeer;
-import java.io.IOException;
 
 public abstract class ActiveMQMessageReceiver implements Runnable {
 
