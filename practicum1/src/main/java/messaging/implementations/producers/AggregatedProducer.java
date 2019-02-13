@@ -1,7 +1,7 @@
 package messaging.implementations.producers;
 
 import messaging.implementations.ActiveMQMessageProducer;
-import messaging.models.IAggregatedMessage;
+import messaging.models.interfaces.IAggregatedMessage;
 
 import javax.jms.ObjectMessage;
 

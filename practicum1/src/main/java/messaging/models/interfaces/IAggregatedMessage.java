@@ -1,4 +1,4 @@
-package messaging.models;
+package messaging.models.interfaces;
 
 public interface IAggregatedMessage {
     int getAggregationId();

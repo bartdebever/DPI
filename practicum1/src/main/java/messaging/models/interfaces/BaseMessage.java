@@ -1,4 +1,4 @@
-package messaging.models;
+package messaging.models.interfaces;
 
 public abstract class BaseMessage {
     private String messageId;

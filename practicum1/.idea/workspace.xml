@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94b979e2-fdba-4bd8-bd53-2649042dcb80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/SimpleMessageReceivedListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/messaging/models/BaseMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/ReceiverWithReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/ReceiverWithReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/StatefullReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/StatefullReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/LoggingMessageReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/LoggingMessageReceivedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/interfaces/IMessageReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/interfaces/IMessageReceivedListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/models/BaseMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/models/interfaces/BaseMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/models/IAggregatedMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/models/interfaces/IAggregatedMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/models/SimpleAggregatedMessage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/messaging/models/SimpleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/models/SimpleMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/serialisers/CastSerialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/CastSerialiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,14 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="435">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/models/interfaces/IAggregatedMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -87,7 +88,6 @@
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/StatefulProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/models/AggregatedMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/messaging/models/IAggregatedMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/models/SimpleAggregatedMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/AggregatedConsumer.java" />
@@ -108,6 +108,8 @@
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" />
         <option value="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" />
+        <option value="$PROJECT_DIR$/src/main/java/messaging/models/IAggregatedMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/messaging/models/interfaces/IAggregatedMessage.java" />
       </list>
     </option>
   </component>
@@ -272,13 +274,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550064550097" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550065095792" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="messaging.models.interfaces" />
       <recent name="programs" />
       <recent name="messaging.implementations" />
       <recent name="messaging.helpers" />
@@ -345,17 +348,18 @@
       <workItem from="1549871016820" duration="3915000" />
       <workItem from="1549880254333" duration="9406000" />
       <workItem from="1549984562610" duration="599000" />
-      <workItem from="1550057954869" duration="6563000" />
+      <workItem from="1550057954869" duration="7108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27135000" />
+    <option name="totallyTimeSpent" value="27680000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26342005" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26342005" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -363,8 +367,8 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -472,9 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/models/IAggregatedMessage.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messaging/listeners/MessageListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -516,7 +517,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/models/BaseMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/models/interfaces/BaseMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
@@ -684,11 +685,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="435">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/models/interfaces/IAggregatedMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

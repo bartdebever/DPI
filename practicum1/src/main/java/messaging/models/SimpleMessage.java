@@ -1,5 +1,7 @@
 package messaging.models;
 
+import messaging.models.interfaces.BaseMessage;
+
 import java.io.Serializable;
 
 public class SimpleMessage extends BaseMessage implements Serializable {
