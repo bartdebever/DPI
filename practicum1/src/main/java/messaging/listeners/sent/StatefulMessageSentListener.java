@@ -1,4 +1,4 @@
-package messaging.listeners;
+package messaging.listeners.sent;
 
 import messaging.listeners.interfaces.IOnMessageSendListener;
 import messaging.models.SimpleMessage;

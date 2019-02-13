@@ -1,4 +1,4 @@
-package messaging.listeners;
+package messaging.listeners.received;
 
 import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.models.AggregatedMessage;
