@@ -1,5 +1,6 @@
-package messaging.listeners.interfaces;
+package messaging.listeners;
 
+import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.models.SimpleMessage;
 import messaging.tracking.StatefulSession;
 

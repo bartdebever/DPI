@@ -5,7 +5,7 @@ import messaging.helpers.ChannelProtocol;
 import messaging.implementations.producers.SimpleProducer;
 import messaging.implementations.receivers.SimpleMessageReceiver;
 import messaging.listeners.StatefulMessageSentListener;
-import messaging.listeners.interfaces.StatefulMessageReceivedListener;
+import messaging.listeners.StatefulMessageReceivedListener;
 import messaging.models.SimpleMessage;
 import messaging.serialisers.SimpleMessageSerialiser;
 import messaging.tracking.StatefulSession;
