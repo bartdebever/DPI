@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="94b979e2-fdba-4bd8-bd53-2649042dcb80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/SimpleMessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/SimpleMessageConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/programs/ProducerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/programs/ProducerProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,27 +37,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+            <state relative-caret-position="300">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1002#1003#0" expanded="true" />
                 <element signature="e#1046#1047#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,6 +143,7 @@
         <option value="$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java" />
       </list>
     </option>
   </component>
@@ -219,6 +207,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="messaging" type="462c0819:PsiDirectoryNode" />
               <item name="implementations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practicum1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practicum1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="messaging" type="462c0819:PsiDirectoryNode" />
+              <item name="implementations" type="462c0819:PsiDirectoryNode" />
+              <item name="producers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="practicum1" type="b2602c69:ProjectViewProjectNode" />
@@ -301,7 +299,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550068818949" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550068922398" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -376,18 +374,18 @@
       <workItem from="1549871016820" duration="3915000" />
       <workItem from="1549880254333" duration="9406000" />
       <workItem from="1549984562610" duration="599000" />
-      <workItem from="1550057954869" duration="10801000" />
+      <workItem from="1550057954869" duration="10931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31373000" />
+    <option name="totallyTimeSpent" value="31503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2423907" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2423907" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -396,7 +394,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,7 +403,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -650,7 +648,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/SimpleMessageReceiver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/receivers/SimpleMessageConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
@@ -800,24 +798,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageReceiver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="48" column="41" lean-forward="true" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
+        <state relative-caret-position="315">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1002#1003#0" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/producers/AggregatedProducer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="300">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
           </folding>
         </state>
       </provider>

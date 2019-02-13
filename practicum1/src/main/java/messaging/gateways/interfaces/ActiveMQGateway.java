@@ -1,7 +1,7 @@
 package messaging.gateways.interfaces;
 
 import messaging.implementations.ActiveMQMessageProducer;
-import messaging.implementations.ActiveMQMessageReceiver;
+import messaging.implementations.ActiveMQMessageConsumer;
 import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.listeners.interfaces.IOnMessageSendListener;
 import messaging.serialisers.interfaces.ISerialiser;
@@ -12,7 +12,7 @@ import java.util.List;
 public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject extends Serializable> {
     private ISerialiser<ReceiveObject> serialiser;
     private List<IMessageReceivedListener> listeners;
-    private ActiveMQMessageReceiver receiver;
+    private ActiveMQMessageConsumer receiver;
     private ActiveMQMessageProducer producer;
     private String queue;
     private Thread receiverThread;
@@ -21,7 +21,7 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
         this.queue = queue;
     }
 
-    public void setReceiver(ActiveMQMessageReceiver receiver) {
+    public void setReceiver(ActiveMQMessageConsumer receiver) {
         this.receiver = receiver;
     }
 

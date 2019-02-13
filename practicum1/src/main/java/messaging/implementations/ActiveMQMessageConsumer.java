@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ActiveMQMessageReceiver implements Runnable {
+public abstract class ActiveMQMessageConsumer implements Runnable {
 
     private String queue;
     private boolean interrupted = false;
     private List<IMessageReceivedListener> listeners;
     private ISerialiser serialiser;
 
-    public ActiveMQMessageReceiver(String queue) {
+    public ActiveMQMessageConsumer(String queue) {
         this.queue = queue;
         this.listeners = new ArrayList<IMessageReceivedListener>();
     }

@@ -3,7 +3,7 @@ package programs;
 import messaging.gateways.interfaces.ActiveMQGateway;
 import messaging.helpers.ChannelProtocol;
 import messaging.implementations.producers.SimpleProducer;
-import messaging.implementations.receivers.SimpleMessageReceiver;
+import messaging.implementations.receivers.SimpleMessageConsumer;
 import messaging.listeners.StatefulMessageSentListener;
 import messaging.listeners.StatefulMessageReceivedListener;
 import messaging.models.SimpleMessage;
@@ -17,7 +17,7 @@ public class ProducerProgram {
         StatefulSession session = new StatefulSession();
         ActiveMQGateway<SimpleMessage, SimpleMessage> gateway = new ActiveMQGateway<SimpleMessage, SimpleMessage>(ChannelProtocol.MessageToClient);
         gateway.setProducer(new SimpleProducer());
-        gateway.setReceiver(new SimpleMessageReceiver(ChannelProtocol.MessageToServer));
+        gateway.setReceiver(new SimpleMessageConsumer(ChannelProtocol.MessageToServer));
 
         gateway.setSerialiser(new SimpleMessageSerialiser());
         gateway.addMessageSentListener(new StatefulMessageSentListener(session));
