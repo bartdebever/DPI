@@ -5,4 +5,6 @@ import java.io.Serializable;
 
 public interface ISerialiser<T extends Serializable> {
     T getObject(Object payload, Message message);
+
+    T getObject(String json);
 }

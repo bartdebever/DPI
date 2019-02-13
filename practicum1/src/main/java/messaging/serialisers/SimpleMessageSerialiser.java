@@ -1,15 +1,15 @@
 package messaging.serialisers;
 
+import com.google.gson.Gson;
 import messaging.models.SimpleMessage;
 import messaging.serialisers.interfaces.ISerialiser;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
-import java.io.Serializable;
 
-public class SimpleMessageSerialiser implements ISerialiser {
+public class SimpleMessageSerialiser implements ISerialiser<SimpleMessage> {
 
-    public Serializable getObject(Object payload, Message message) {
+    public SimpleMessage getObject(Object payload, Message message) {
         SimpleMessage simpleMessage = (SimpleMessage)payload;
 
         try {
@@ -20,5 +20,9 @@ public class SimpleMessageSerialiser implements ISerialiser {
         }
 
         return simpleMessage;
+    }
+
+    public SimpleMessage getObject(String json) {
+        return new Gson().fromJson(json, SimpleMessage.class);
     }
 }

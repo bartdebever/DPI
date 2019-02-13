@@ -1,5 +1,6 @@
 package messaging.implementations;
 
+import com.google.gson.Gson;
 import messaging.helpers.AMQConnectionFactory;
 import messaging.listeners.interfaces.IOnMessageSendListener;
 import messaging.serialisers.interfaces.ISerialiser;
@@ -40,12 +41,16 @@ public abstract class ActiveMQMessageProducer {
             MessageProducer producer = session.createProducer(destination);
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
-            ObjectMessage message = session.createObjectMessage();
+            TextMessage message = session.createTextMessage();
+
+            String data = new Gson().toJson(reply);
+
+            message.setText(data);
+
             if (messageId != null) {
                 message.setJMSCorrelationID(messageId);
             }
 
-            message.setObject(reply);
             message = beforeMessageSent(message, reply);
             producer.send(message);
 
@@ -64,11 +69,11 @@ public abstract class ActiveMQMessageProducer {
         }
     }
 
-    public void onMessageSent(ObjectMessage message, Object payload) {
+    public void onMessageSent(Message message, Object payload) {
 
     }
 
-    public ObjectMessage beforeMessageSent(ObjectMessage message, Object payload) {
+    public TextMessage beforeMessageSent(TextMessage message, Object payload) {
         return message;
     }
 }

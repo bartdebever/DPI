@@ -2,7 +2,6 @@ package messaging.implementations;
 
 import messaging.helpers.AMQConnectionFactory;
 import messaging.listeners.interfaces.IMessageReceivedListener;
-import messaging.models.SimpleMessage;
 import messaging.serialisers.interfaces.ISerialiser;
 
 import javax.jms.*;
@@ -59,9 +58,9 @@ public abstract class ActiveMQMessageReceiver implements Runnable {
             // Wait for a message
             while (!interrupted) {
                 Message message = consumer.receive();
-                if (message instanceof ObjectMessage) {
-                    ObjectMessage objectMessage = (ObjectMessage)message;
-                    receiveMessage(objectMessage.getObject(), objectMessage);
+                if (message instanceof TextMessage) {
+                    TextMessage objectMessage = (TextMessage) message;
+                    receiveMessage(serialiser.getObject(objectMessage.getText()), objectMessage);
                 }
             }
 
