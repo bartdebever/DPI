@@ -6,7 +6,7 @@ import messaging.implementations.producers.SimpleProducer;
 import messaging.implementations.receivers.SimpleMessageConsumer;
 import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.models.SimpleMessage;
-import messaging.serialisers.SimpleMessageSerialiser;
+import messaging.serialisers.SimpleMessageSerializer;
 
 import java.io.Serializable;
 
@@ -16,7 +16,7 @@ public class ReceiverProgram implements IMessageReceivedListener {
         gateway = new ActiveMQGateway<SimpleMessage, SimpleMessage>(ChannelProtocol.MessageToServer);
         gateway.setProducer(new SimpleProducer());
         gateway.setReceiver(new SimpleMessageConsumer(ChannelProtocol.MessageToClient));
-        gateway.setSerialiser(new SimpleMessageSerialiser());
+        gateway.setSerialiser(new SimpleMessageSerializer());
         gateway.addMessageListener(new ReceiverProgram());
         gateway.runReceiver();
     }

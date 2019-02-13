@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="94b979e2-fdba-4bd8-bd53-2649042dcb80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/AggregationMessageReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/received/AggregationMessageReceivedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/AggregationMessageSentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/sent/AggregationMessageSentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/LoggingMessageReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/received/LoggingMessageReceivedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/SimpleMessageReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/received/SimpleMessageReceivedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/StatefulMessageReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/received/StatefulMessageReceivedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/listeners/StatefulMessageSentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/listeners/sent/StatefulMessageSentListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/gateways/interfaces/ActiveMQGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/programs/ProducerProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/programs/ProducerProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/programs/ReceiverProgram.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="27" column="54" lean-forward="true" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+            <state relative-caret-position="330">
+              <caret line="40" column="57" lean-forward="true" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1002#1003#0" expanded="true" />
@@ -54,7 +54,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerializer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
@@ -66,7 +66,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
@@ -301,7 +301,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550068984859" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550069057860" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -376,12 +376,12 @@
       <workItem from="1549871016820" duration="3915000" />
       <workItem from="1549880254333" duration="9406000" />
       <workItem from="1549984562610" duration="599000" />
-      <workItem from="1550057954869" duration="10993000" />
+      <workItem from="1550057954869" duration="11067000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31565000" />
+    <option name="totallyTimeSpent" value="31639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -778,7 +778,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerialiser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/interfaces/ISerializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
@@ -788,7 +788,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerialiser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/messaging/serialisers/SimpleMessageSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
@@ -812,8 +812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messaging/implementations/ActiveMQMessageConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="27" column="54" lean-forward="true" selection-start-line="27" selection-start-column="54" selection-end-line="27" selection-end-column="54" />
+        <state relative-caret-position="330">
+          <caret line="40" column="57" lean-forward="true" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1002#1003#0" expanded="true" />

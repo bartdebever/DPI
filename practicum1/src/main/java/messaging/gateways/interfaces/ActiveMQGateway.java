@@ -4,13 +4,13 @@ import messaging.implementations.ActiveMQMessageProducer;
 import messaging.implementations.ActiveMQMessageConsumer;
 import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.listeners.interfaces.IOnMessageSendListener;
-import messaging.serialisers.interfaces.ISerialiser;
+import messaging.serialisers.interfaces.ISerializer;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject extends Serializable> {
-    private ISerialiser<ReceiveObject> serialiser;
+    private ISerializer<ReceiveObject> serialiser;
     private List<IMessageReceivedListener> listeners;
     private ActiveMQMessageConsumer receiver;
     private ActiveMQMessageProducer producer;
@@ -29,7 +29,7 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
         this.producer = producer;
     }
 
-    public void setSerialiser(ISerialiser<ReceiveObject> serialiser) {
+    public void setSerialiser(ISerializer<ReceiveObject> serialiser) {
         this.receiver.setSerialiser(serialiser);
         this.producer.setSerialiser(serialiser);
     }

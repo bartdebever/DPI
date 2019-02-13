@@ -2,7 +2,7 @@ package messaging.implementations;
 
 import messaging.helpers.AMQConnectionFactory;
 import messaging.listeners.interfaces.IMessageReceivedListener;
-import messaging.serialisers.interfaces.ISerialiser;
+import messaging.serialisers.interfaces.ISerializer;
 
 import javax.jms.*;
 import java.io.Serializable;
@@ -14,7 +14,7 @@ public abstract class ActiveMQMessageConsumer implements Runnable {
     private String queue;
     private boolean interrupted = false;
     private List<IMessageReceivedListener> listeners;
-    private ISerialiser serialiser;
+    private ISerializer serialiser;
 
     public ActiveMQMessageConsumer(String queue) {
         this.queue = queue;
@@ -29,8 +29,8 @@ public abstract class ActiveMQMessageConsumer implements Runnable {
         this.listeners.remove(listener);
     }
 
-    public void setSerialiser(ISerialiser serialiser) {
-        this.serialiser = serialiser;
+    public void setSerialiser(ISerializer serializer) {
+        this.serialiser = serializer;
     }
 
     public void stop() {

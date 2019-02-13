@@ -3,7 +3,7 @@ package messaging.implementations;
 import com.google.gson.Gson;
 import messaging.helpers.AMQConnectionFactory;
 import messaging.listeners.interfaces.IOnMessageSendListener;
-import messaging.serialisers.interfaces.ISerialiser;
+import messaging.serialisers.interfaces.ISerializer;
 
 import javax.jms.*;
 import java.io.Serializable;
@@ -13,13 +13,13 @@ import java.util.List;
 public abstract class ActiveMQMessageProducer {
 
     private List<IOnMessageSendListener> onMessageSendListeners;
-    private ISerialiser serialiser;
+    private ISerializer serialiser;
 
     public ActiveMQMessageProducer() {
         this.onMessageSendListeners = new ArrayList<IOnMessageSendListener>();
     }
 
-    public void setSerialiser(ISerialiser serialiser) {
+    public void setSerialiser(ISerializer serialiser) {
         this.serialiser = serialiser;
     }
 

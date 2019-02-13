@@ -7,7 +7,7 @@ import messaging.implementations.receivers.SimpleMessageConsumer;
 import messaging.listeners.sent.StatefulMessageSentListener;
 import messaging.listeners.received.StatefulMessageReceivedListener;
 import messaging.models.SimpleMessage;
-import messaging.serialisers.SimpleMessageSerialiser;
+import messaging.serialisers.SimpleMessageSerializer;
 import messaging.tracking.StatefulSession;
 
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class ProducerProgram {
         gateway.setProducer(new SimpleProducer());
         gateway.setReceiver(new SimpleMessageConsumer(ChannelProtocol.MessageToServer));
 
-        gateway.setSerialiser(new SimpleMessageSerialiser());
+        gateway.setSerialiser(new SimpleMessageSerializer());
         gateway.addMessageSentListener(new StatefulMessageSentListener(session));
         gateway.addMessageListener(new StatefulMessageReceivedListener(session));
 
