@@ -5,12 +5,10 @@ import messaging.helpers.AMQConnectionFactory;
 import javax.jms.*;
 import java.io.Serializable;
 
-// TODO Make abstract
 public abstract class ActiveMQMessageProducer {
 
-    private static int idCounter;
-    public <T extends Serializable> void sendMessage(T reply, String queue) {
-        sendReply(reply, queue, null);
+    public <T extends Serializable> void sendMessage(T payload, String queue) {
+        sendReply(payload, queue, null);
     }
 
     public <T extends Serializable> void sendReply(T reply, String queue, String messageId) {
@@ -29,6 +27,7 @@ public abstract class ActiveMQMessageProducer {
             }
 
             message.setObject(reply);
+            message = beforeMessageSent(message, reply);
             producer.send(message);
 
             onMessageSent(message, reply);
@@ -44,6 +43,10 @@ public abstract class ActiveMQMessageProducer {
 
     public void onMessageSent(ObjectMessage message, Object payload) {
 
+    }
+
+    public ObjectMessage beforeMessageSent(ObjectMessage message, Object payload) {
+        return message;
     }
 }
 
