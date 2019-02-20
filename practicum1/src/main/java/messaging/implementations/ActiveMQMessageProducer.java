@@ -3,7 +3,7 @@ package messaging.implementations;
 import com.google.gson.Gson;
 import messaging.helpers.AMQConnectionFactory;
 import messaging.listeners.interfaces.IOnMessageSendListener;
-import messaging.serialisers.interfaces.ISerializer;
+import messaging.serializers.interfaces.ISerializer;
 
 import javax.jms.*;
 import java.io.Serializable;

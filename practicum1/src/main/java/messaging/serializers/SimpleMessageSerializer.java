@@ -1,8 +1,8 @@
-package messaging.serialisers;
+package messaging.serializers;
 
 import com.google.gson.Gson;
 import messaging.models.SimpleMessage;
-import messaging.serialisers.interfaces.ISerializer;
+import messaging.serializers.interfaces.ISerializer;
 
 import javax.jms.JMSException;
 import javax.jms.Message;

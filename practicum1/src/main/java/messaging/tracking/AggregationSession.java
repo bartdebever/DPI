@@ -2,11 +2,17 @@ package messaging.tracking;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AggregationSession {
+
     private Map<Integer, List<Serializable>> state;
+
+    public AggregationSession() {
+        state = new HashMap<Integer, List<Serializable>>();
+    }
 
     public void addReply(int key, Serializable reply) {
         if (!state.containsKey(key)) {

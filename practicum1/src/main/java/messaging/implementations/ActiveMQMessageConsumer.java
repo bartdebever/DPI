@@ -2,7 +2,7 @@ package messaging.implementations;
 
 import messaging.helpers.AMQConnectionFactory;
 import messaging.listeners.interfaces.IMessageReceivedListener;
-import messaging.serialisers.interfaces.ISerializer;
+import messaging.serializers.interfaces.ISerializer;
 
 import javax.jms.*;
 import java.io.Serializable;

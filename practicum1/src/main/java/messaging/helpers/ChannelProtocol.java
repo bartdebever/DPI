@@ -13,4 +13,8 @@ public class ChannelProtocol {
      * Used to send simple messages to the client.
      */
     public static final String MessageToClient = "Test.ToClient";
+
+    public static final String Aggregation1 = "Test.Agg1";
+
+    public static final String Aggregation2 =  "Test.Agg2";
 }

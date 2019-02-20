@@ -1,4 +1,4 @@
-package messaging.serialisers.interfaces;
+package messaging.serializers.interfaces;
 
 import javax.jms.Message;
 import java.io.Serializable;

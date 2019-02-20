@@ -4,7 +4,7 @@ import messaging.implementations.ActiveMQMessageProducer;
 import messaging.implementations.ActiveMQMessageConsumer;
 import messaging.listeners.interfaces.IMessageReceivedListener;
 import messaging.listeners.interfaces.IOnMessageSendListener;
-import messaging.serialisers.interfaces.ISerializer;
+import messaging.serializers.interfaces.ISerializer;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,6 +40,10 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
 
     public void sendMessage(SendObject message, String messageId) {
         this.producer.sendMessage(message, queue, messageId);
+    }
+
+    public void sendToQueue(SendObject message, String queue) {
+        this.producer.sendMessage(message, queue, null);
     }
 
     public void runReceiver() throws Exception {
