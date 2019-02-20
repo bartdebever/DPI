@@ -14,7 +14,7 @@ public abstract class ActiveMQMessageConsumer implements Runnable {
     private String queue;
     private boolean interrupted = false;
     private List<IMessageReceivedListener> listeners;
-    private ISerializer serialiser;
+    private ISerializer serializer;
 
     public ActiveMQMessageConsumer(String queue) {
         this.queue = queue;
@@ -29,8 +29,8 @@ public abstract class ActiveMQMessageConsumer implements Runnable {
         this.listeners.remove(listener);
     }
 
-    public void setSerialiser(ISerializer serializer) {
-        this.serialiser = serializer;
+    public void setSerializer(ISerializer serializer) {
+        this.serializer = serializer;
     }
 
     public void stop() {
@@ -38,7 +38,7 @@ public abstract class ActiveMQMessageConsumer implements Runnable {
     }
 
     public void receiveMessage(Serializable payload, Message message) {
-        payload = serialiser.getObject(payload, message);
+        payload = serializer.getObject(payload, message);
         for (IMessageReceivedListener listener : listeners) {
             listener.onMessageReceived(payload);
         }
@@ -60,7 +60,7 @@ public abstract class ActiveMQMessageConsumer implements Runnable {
                 Message message = consumer.receive();
                 if (message instanceof TextMessage) {
                     TextMessage objectMessage = (TextMessage) message;
-                    receiveMessage(serialiser.getObject(objectMessage.getText()), objectMessage);
+                    receiveMessage(serializer.getObject(objectMessage.getText()), objectMessage);
                 }
             }
 

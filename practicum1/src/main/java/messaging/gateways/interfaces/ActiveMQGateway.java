@@ -30,7 +30,7 @@ public class ActiveMQGateway <SendObject extends Serializable, ReceiveObject ext
     }
 
     public void setSerialiser(ISerializer<ReceiveObject> serialiser) {
-        this.receiver.setSerialiser(serialiser);
+        this.receiver.setSerializer(serialiser);
         this.producer.setSerialiser(serialiser);
     }
 
